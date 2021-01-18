@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.95 134.19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #efefef;
+        stroke-miterlimit: 10;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="item">
+    <g>
+      <polygon
+        class="cls-1"
+        points="77.48 133.19 154.09 0.5 0.87 0.5 77.48 133.19"
+      />
+    </g>
+  </g>
+</svg>
