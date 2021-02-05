@@ -1,37 +1,53 @@
 <template>
   <div id="top" class="container">
-    <transition name="fade">
-      <div v-if="show">
-        <div class="portfolio">
+    <div>
+      <transition name="move">
+        <div v-if="show" class="portfolio">
           portfolio
         </div>
-        <div class="top-img">
-          <div class="menu-header">
-            <div class="menu-about" @click="scrollAbout">
-              about
-            </div>
-            <div class="menu-gallery" @click="scrollGallery">
-              gallery
-            </div>
+      </transition>
+      <transition name="fade">
+        <div v-if="show" class="top-img"></div>
+      </transition>
+      <transition name="move">
+        <div v-if="show" class="menu-header">
+          <div class="menu-about" @click="scrollAbout">
+            about
+          </div>
+          <div class="menu-gallery" @click="scrollGallery">
+            gallery
           </div>
         </div>
-        <!-- <div class="menu-button-wrapper">
-      <svg fill="none" stroke="white" class="menu-button">
-        <use xlink:href="/svg/menu2.svg#item" />
-      </svg>
-    </div> -->
-        <transition name="fade">
-          <div class="bg-hana"></div>
-        </transition>
-        <div class="bg-hana2"></div>
-        <div class="bg-hana3"></div>
-        <div class="bg-hana4"></div>
-        <div class="bg-hana5"></div>
-        <div class="bg-hana6"></div>
-        <div class="bg-hana7"></div>
-        <div class="bg-hana8"></div>
-        <div class="bg-hana9"></div>
-        <div class="scroll-button-wrapper" @click="scrollTop">
+      </transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana2"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana3"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana4"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana5"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana6"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana7"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana8"></div
+      ></transition>
+      <transition name="move-hana">
+        <div v-if="show" class="bg-hana9"></div
+      ></transition>
+      <transition name="move">
+        <div v-if="show" class="scroll-button-wrapper" @click="scrollTop">
           <svg fill="none" stroke="white" class="scroll-button">
             <use xlink:href="/svg/menu1.svg#item" />
           </svg>
@@ -44,23 +60,27 @@
             <p>i</p>
           </div>
         </div>
-
-        <div ref="about" class="about">
+      </transition>
+      <transition name="move">
+        <div v-if="show" ref="about" class="about">
           <div class="title">
             About
           </div>
           <div class="about-body">
             <div class="profile-body">
               <div class="profilename-body">
+                <div class="profile-icon">
+                  <img src="/img/profile-icon.png" alt="" />
+                </div>
                 <div class="profile-name temp">
-                  原田 沙織
+                  宇機 すい
                 </div>
                 <div class="profilename-rubi">
-                  Harada Saori
+                  Uki Sui
                 </div>
               </div>
               <div class="profile-main">
-                <p>1993年8月7日生まれ。九州出身。</p>
+                <p>1993年生まれ。</p>
                 <p>
                   デザイン科高校卒業後、東京の美術館で販売の傍らPOP・チラシ制作を行う。
                 </p>
@@ -95,7 +115,9 @@
             </div>
           </div>
         </div>
-        <div ref="gallery" class="gallery">
+      </transition>
+      <transition name="move">
+        <div v-if="show" ref="gallery" class="gallery">
           <div class="title">
             Gallery
           </div>
@@ -122,24 +144,26 @@
             </div>
           </div>
         </div>
-        <div class="footer">
+      </transition>
+      <transition name="move">
+        <div v-if="show" class="footer">
           <div class="footer-main">
-            ©︎2020 ukisui
+            ©︎2021 ukisui
           </div>
         </div>
-        <div :class="['modal', modalIndex === null ? null : 'is-active']">
-          <div class="modal-background" @click="modalIndex = null"></div>
-          <div class="modal-content">
-            <galleries ref="galleries"></galleries>
-          </div>
-          <button
-            class="modal-close is-large"
-            aria-label="close"
-            @click="modalIndex = null"
-          ></button>
+      </transition>
+      <div :class="['modal', modalIndex === null ? null : 'is-active']">
+        <div class="modal-background" @click="showModal(null)"></div>
+        <div class="modal-content">
+          <galleries ref="galleries"></galleries>
         </div>
+        <button
+          class="modal-close is-large"
+          aria-label="close"
+          @click="showModal(null)"
+        ></button>
       </div>
-    </transition>
+    </div>
   </div>
 </template>
 
@@ -164,10 +188,7 @@ export default {
           title: "ファッションサイト バナー",
           imgSrc: "/img/fashion-icon.png"
         },
-        {
-          title: "オーガニックオイル　新発売バナー例",
-          imgSrc: "/img/oil-icon.png"
-        },
+
         {
           title: "不動産チラシ(モノクロ)",
           imgSrc: "/img/rbm-icon.png"
@@ -195,6 +216,10 @@ export default {
         {
           title: "アイクリームLPへのインスタ用誘導バナー",
           imgSrc: "/img/cream-icon.png"
+        },
+        {
+          title: "その他バナー例",
+          imgSrc: "/img/oil-icon.png"
         }
       ],
       skills: [
@@ -230,12 +255,12 @@ export default {
         },
         {
           name: "Vue.js",
-          rateSrc: "/img/hoshi1.png",
+          rateSrc: "/img/hoshi2.png",
           iconSrc: "/img/vue-icon.png"
         },
         {
           name: "Nuxt.js",
-          rateSrc: "/img/hoshi1.png",
+          rateSrc: "/img/hoshi2.png",
           iconSrc: "/img/nuxt-icon.png"
         }
       ],
@@ -275,6 +300,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.profile-icon {
+  width: 70px;
+  height: 70px;
+  // margin-left: 80px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .portfolio {
   font-family: YuGothic, "Yu Gothic", "Hiragino Kaku Gothic ProN",
     "ヒラギノ角ゴ ProN W3", "Arial", "メイリオ", Meiryo, sans-serif;
@@ -294,12 +328,15 @@ export default {
   flex-direction: column;
   padding: 50px;
   top: 0;
+  padding-top: 10%;
+  width: 75%;
 }
 .menu-about {
   z-index: 1;
   cursor: pointer;
   text-align: left;
   margin-bottom: 50px;
+  width: 10%;
 }
 .menu-about:hover {
   color: #fff;
@@ -308,6 +345,7 @@ export default {
   cursor: pointer;
   z-index: 1;
   text-align: left;
+  width: 10%;
 }
 .menu-gallery:hover {
   color: #fff;
@@ -562,6 +600,7 @@ export default {
   letter-spacing: 1px;
   text-align: left;
   width: 75%;
+  padding-left: 10px;
 }
 .profilename-rubi {
   font-family: YuGothic, "Yu Gothic", "Hiragino Kaku Gothic ProN",
@@ -572,19 +611,21 @@ export default {
   letter-spacing: 1px;
   display: flex;
   flex-direction: column-reverse;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 .profilename-body {
   display: flex;
-  /* justify-content: center; */
+  justify-content: left;
   flex-direction: row;
-  /* align-items: center; */
-  text-align: left;
+  align-items: center;
+  // text-align: left;
+  padding-bottom: 30px;
 }
 .profile-name {
   text-align: left;
   padding-right: 10px;
-  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 .profile-body {
   display: flex;
@@ -692,12 +733,29 @@ export default {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.8s;
+  transition: opacity 1s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-.bg-hana {
-  transition-delay: 2s;
+.move-enter-active,
+.move-leave-active {
+  transition: opacity 1s, transform 1s;
+  transition-delay: 1.8s;
 }
+.move-enter, .move-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translate(20px, 0);
+}
+.move-hana-enter-active,
+.move-hana-leave-active {
+  transition: opacity 1s;
+  transition-delay: 1s;
+}
+.move-hana-enter, .move-hana-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+// .bg-hana {
+//   transition-delay: 2s;
+// }
 </style>

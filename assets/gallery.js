@@ -66,18 +66,6 @@ const fashion = {
     }
   ]
 };
-const oil = {
-  mainSrc: "/img/oil.png",
-  commentTitle: "オーガニックオイル　新発売バナー例",
-  commentIrai: "",
-  commentDesign: "",
-  subImages: [
-    // {
-    //   src: "",
-    //   text: ""
-    // }
-  ]
-};
 const rbm = {
   mainSrc: "/img/rbm.png",
   commentTitle: "不動産チラシ(モノクロ)",
@@ -232,16 +220,32 @@ const cream = {
     }
   ]
 };
+const oil = {
+  mainSrc: "/img/oil.png",
+  commentTitle: "その他バナー例",
+  commentIrai: "",
+  commentDesign: "",
+  subImages: [
+    {
+      src: "/img/sample06.jpg",
+      text: ""
+    },
+    {
+      src: "/img/sample05.jpg",
+      text: ""
+    },
+  ]
+};
 export const galleriesTemplate = [
   namioto,
   takeout,
   fashion,
-  oil,
   rbm,
   nsbs,
   oruchan,
   tec,
   kataduke,
   golf,
-  cream
+  cream,
+  oil
 ];

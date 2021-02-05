@@ -1,13 +1,19 @@
 <template>
   <div class="bg">
     <div class="content">
-      <gallery
-        :mainSrc="galleries[index].mainSrc"
-        :commentTitle="galleries[index].commentTitle"
-        :commentIrai="galleries[index].commentIrai"
-        :commentDesign="galleries[index].commentDesign"
-        :subImages="galleries[index].subImages"
-      ></gallery>
+      <transition name="fade" mode="out-in">
+        <keep-alive>
+          <gallery
+            v-if="index !== null"
+            :mainSrc="galleries[index].mainSrc"
+            :commentTitle="galleries[index].commentTitle"
+            :commentIrai="galleries[index].commentIrai"
+            :commentDesign="galleries[index].commentDesign"
+            :subImages="galleries[index].subImages"
+            :key="index"
+          />
+        </keep-alive>
+      </transition>
 
       <div v-if="index > 0" class="back-button" @click="index -= 1"></div>
       <div
@@ -27,13 +33,20 @@ export default {
   },
   data() {
     return {
-      index: 0,
+      index: null,
       galleries: galleriesTemplate
     };
   }
 };
 </script>
 <style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .forward-button {
   width: 40px;
   height: 100px;
